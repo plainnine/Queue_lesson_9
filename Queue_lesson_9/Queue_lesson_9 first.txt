@@ -1,0 +1,53 @@
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+            class Fish{
+                String name;
+                double price;
+                double weight;
+                public Fish(String name,double weight,double price){
+                    this.name=name;
+                    this.price=price;
+                    this.weight=weight;
+                }
+                public boolean equals(Object o){
+                    if(o==this){return true;}
+                    if(!(o instanceof Fish)){
+                        return false;
+                    }
+                    Fish tmp=(Fish) o;
+                    return (tmp.name.equals(this.name)&&tmp.weight==this.weight&&tmp.price==(this.price));
+                }
+                public int hashCode(){
+                    return this.name.hashCode();
+                }
+                public double getWeight(){return this.weight;}
+                @Override
+                public String toString(){return this.name+" Вес: "+this.weight+" Цена: "+this.price;}
+
+
+
+            }
+        Map<Fish,Integer>map=new LinkedHashMap<>();
+        Fish fish1=new Fish("ell",1.5,120);
+        Fish fish5=new Fish("salmon",4.5,160);
+        Fish fish3=new Fish("salmon",3.5,220);
+        Fish fish4=new Fish("salmon",2.5,150);
+        Fish fish2=new Fish("salmon",2.5,150);
+
+
+        map.put(fish1,120);
+        map.put(fish2,150);
+        map.put(fish3,220);
+        map.put(fish4,150);
+        map.put(fish5,1000);
+
+        for(Map.Entry<Fish,Integer>entry:map.entrySet()){
+            Fish key=entry.getKey();
+            int b = entry.getValue();
+            System.out.println(key+"->"+b);
+        }
+
+        }
+    }
